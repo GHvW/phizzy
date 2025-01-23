@@ -12,7 +12,7 @@ export class BBox {
 
     intersects(other: BBox): boolean {
         return this.max.x >= other.min.x
-            && this.min.y <= other.max.x
+            && this.min.x <= other.max.x
             && this.max.y >= other.min.y
             && this.min.y <= other.max.y
     }
