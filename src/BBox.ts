@@ -2,19 +2,22 @@ import { Vec2 } from "dim-sum";
 
 export class BBox {
 
-    min: Vec2;
-    max: Vec2;
+    position: Vec2;
+    height: number;
+    width: number;
 
-    constructor(min: Vec2, max: Vec2) {
-        this.min = min;
-        this.max = max;
+
+    constructor(position: Vec2, width: number, height: number) {
+        this.position = position;
+        this.height = height;
+        this.width = width;
     }
 
     intersects(other: BBox): boolean {
-        return this.max.x >= other.min.x
-            && this.min.x <= other.max.x
-            && this.max.y >= other.min.y
-            && this.min.y <= other.max.y
+        return this.position.x + this.width >= other.position.x
+            && this.position.x <= other.position.x + other.width
+            && this.position.y + this.height >= other.position.y
+            && this.position.y <= other.position.y + other.height;
     }
 }
 
